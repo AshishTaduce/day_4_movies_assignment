@@ -24,8 +24,6 @@ void main() {
 String movies = MoviesList.moviesJsonList;
 List movieList = json.decode(movies);
 
-
-
 // Hint:
 // Convert the string to List of maps using jsonDecode and then use it
 
@@ -35,46 +33,45 @@ class MoviesPage extends StatefulWidget {
   @override
   _MoviesPageState createState() => _MoviesPageState();
 }
-
 class _MoviesPageState extends State<MoviesPage> {
 
   Map movie1 = movieList[0];
-  Widget posterMaker(int index){
-    //int i = 0;
-    Expanded c = Expanded(
-      child: Image.network(poster[index]),
-    );
-    if(index == poster.length - 1){
-      index = 0;
-    }
-return c;
-  }
-
-
   List id =[];
   List poster = [];
+  String imageurl = "https://raw.githubusercontent.com/android10/Sample-Data/master/Android-CleanArchitecture-Kotlin/posters/038001.jpg";
   @override
   Widget build(BuildContext context) {
-    for(var x in movieList){
-      poster.add(x['poster']);
-      id.add(x['id']);
-    }
+
   int index = 0;
+  int i = 1;
 
     return Container(
         child : Column(
 
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            //Image.network('$imageurl'),
-            posterMaker(index),
-            RaisedButton(
-              color: Colors.yellow,
-              textColor: Colors.black,
-              child: const Text(
-                  'Next Movie',
-                  style: TextStyle(fontSize: 20)
+            Expanded(
+              flex: 8,
+              child: Image.network('$imageurl',),),
+            Expanded(
+              flex: 2,
+              child: RaisedButton(
+                color: Colors.yellow,
+                textColor: Colors.white,
+                child: const Text(
+                    'Next Movie',
+                    style: TextStyle(fontSize: 20)
+                ),
+                onPressed: (){
+                  setState(() {
+                    imageurl = poster [index+i];
+                    i++;
+                    if (index == poster.length){
+                      index = 0;
+                    }
+                  });
+                },
               ),
             )
           ],
