@@ -75,7 +75,7 @@ class _MoviesPageState extends State<MoviesPage> {
                     setState(() {
                       index++;
                       print(index);
-                     // if (index == poster.length){index = 0;}
+                     if (index == poster.length -1){index = 0;}
                     });
                   },
                 ),
