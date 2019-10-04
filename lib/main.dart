@@ -46,11 +46,9 @@ class _MoviesPageState extends State<MoviesPage> {
       poster.add(x['poster']);
       id.add(x['id']);
     }
-    for(var x in poster){
-      print(x);
-    }
-  int index = 0;
-  int i = 1;
+
+  int index = 9;
+
 
     return Container(
         child : Padding(
@@ -62,7 +60,7 @@ class _MoviesPageState extends State<MoviesPage> {
             children: <Widget>[
               Expanded(
                 flex: 9,
-                child: Image.network('$imageurl',),),
+                child: Image.network('${poster [index]}',),),
               Expanded(
                 flex: 1,
                 child: RaisedButton(
@@ -74,8 +72,8 @@ class _MoviesPageState extends State<MoviesPage> {
                   ),
                   onPressed: (){
                     setState(() {
-                      imageurl = poster [index+i];
                       index++;
+                      print(index);
                      // if (index == poster.length){index = 0;}
                     });
                   },
