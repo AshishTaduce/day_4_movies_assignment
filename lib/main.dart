@@ -36,6 +36,7 @@ class MoviesPage extends StatefulWidget {
 class _MoviesPageState extends State<MoviesPage> {
 
   Map movie1 = movieList[0];
+  int index = 0;
   List id =[];
   List poster = [];
   String imageurl = "https://raw.githubusercontent.com/android10/Sample-Data/master/Android-CleanArchitecture-Kotlin/posters/038001.jpg";
@@ -47,7 +48,7 @@ class _MoviesPageState extends State<MoviesPage> {
       id.add(x['id']);
     }
 
-  int index = 9;
+
 
 
     return Container(
