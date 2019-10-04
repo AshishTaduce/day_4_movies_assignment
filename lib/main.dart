@@ -39,10 +39,19 @@ class MoviesPage extends StatefulWidget {
 class _MoviesPageState extends State<MoviesPage> {
 
   Map movie1 = movieList[0];
+  Widget posterMaker(int index){
+    //int i = 0;
+    Expanded c = Expanded(
+      child: Image.network(poster[index]),
+    );
+    if(index == poster.length - 1){
+      index = 0;
+    }
+return c;
+  }
 
 
-
-  List id = movieList.toList();
+  List id =[];
   List poster = [];
   @override
   Widget build(BuildContext context) {
@@ -50,15 +59,16 @@ class _MoviesPageState extends State<MoviesPage> {
       poster.add(x['poster']);
       id.add(x['id']);
     }
-
+  int index = 0;
 
     return Container(
         child : Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             //Image.network('$imageurl'),
-            Image.network(poster[5]),
+            posterMaker(index),
             RaisedButton(
               color: Colors.yellow,
               textColor: Colors.black,
