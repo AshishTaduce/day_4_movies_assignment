@@ -41,6 +41,10 @@ class _MoviesPageState extends State<MoviesPage> {
   String imageurl = "https://raw.githubusercontent.com/android10/Sample-Data/master/Android-CleanArchitecture-Kotlin/posters/038001.jpg";
   @override
   Widget build(BuildContext context) {
+    String moviesList = MoviesList.moviesJsonList;
+    String link =
+        "https://raw.githubusercontent.com/android10/Sample-Data/master/Android-CleanArchitecture-Kotlin/posters/038001.jpg";
+    int moviesNumber = 0;
 
   int index = 0;
   int i = 1;
@@ -65,17 +69,15 @@ class _MoviesPageState extends State<MoviesPage> {
                 ),
                 onPressed: (){
                   setState(() {
-                    imageurl = poster [index+i];
-                    i++;
-                    if (index == poster.length){
-                      index = 0;
-                    }
-                  });
+    link = movies[moviesNumber][index];
+    moviesNumber = moviesNumber + 1;
+    if (moviesNumber == movies.length) moviesNumber = 0;}
+                  ),},),
                 },
               ),
             )
           ],
-        )
+        ),
     );
   }
 }
