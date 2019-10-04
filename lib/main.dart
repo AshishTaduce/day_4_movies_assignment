@@ -42,42 +42,48 @@ class _MoviesPageState extends State<MoviesPage> {
   @override
   Widget build(BuildContext context) {
     String moviesList = MoviesList.moviesJsonList;
-    String link =
-        "https://raw.githubusercontent.com/android10/Sample-Data/master/Android-CleanArchitecture-Kotlin/posters/038001.jpg";
-    int moviesNumber = 0;
-
+    for(var x in movieList){
+      poster.add(x['poster']);
+      id.add(x['id']);
+    }
+    for(var x in poster){
+      print(x);
+    }
   int index = 0;
   int i = 1;
 
     return Container(
-        child : Column(
+        child : Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
 
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Expanded(
-              flex: 8,
-              child: Image.network('$imageurl',),),
-            Expanded(
-              flex: 2,
-              child: RaisedButton(
-                color: Colors.yellow,
-                textColor: Colors.white,
-                child: const Text(
-                    'Next Movie',
-                    style: TextStyle(fontSize: 20)
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Expanded(
+                flex: 9,
+                child: Image.network('$imageurl',),),
+              Expanded(
+                flex: 1,
+                child: RaisedButton(
+                  color: Colors.yellow,
+                  textColor: Colors.black,
+                  child: const Text(
+                      'Next Movie',
+                      style: TextStyle(fontSize: 20)
+                  ),
+                  onPressed: (){
+                    setState(() {
+                      imageurl = poster [index+i];
+                      index++;
+                     // if (index == poster.length){index = 0;}
+                    });
+                  },
                 ),
-                onPressed: (){
-                  setState(() {
-    link = movies[moviesNumber][index];
-    moviesNumber = moviesNumber + 1;
-    if (moviesNumber == movies.length) moviesNumber = 0;}
-                  ),},),
-                },
-              ),
-            )
-          ],
-        ),
+              )
+            ],
+          ),
+        )
     );
   }
 }
